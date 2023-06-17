@@ -9,7 +9,7 @@ dotenv.config()
 const imARealBoi = async () => {
   // launch own chrome
   const browser = await puppeteer.launch({
-    headless: 'false',
+    headless: 'new',
   })
 
   const page = await browser.newPage()
