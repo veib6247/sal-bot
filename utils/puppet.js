@@ -5,7 +5,24 @@ import puppeteer from 'puppeteer'
  * @param {string} context - tells what to log in the console
  */
 export const botClocker = async (context) => {
-  const contextString = context == 'clock_in' ? 'Clocking in' : 'Clocking out'
+  let contextString = ''
+
+  switch (context) {
+    case 'clock_in':
+      contextString = 'Clocking in'
+      break
+
+    case 'clock_out':
+      contextString = 'Clocking out'
+      break
+
+    default:
+      const errorMsg = `Context ${context} is undefined, skipping job.`
+
+      console.log(errorMsg)
+      throw new Error(errorMsg)
+  }
+
   console.log(contextString)
 
   const browser = await puppeteer.launch({
