@@ -1,53 +1,30 @@
-import puppeteer from 'puppeteer'
 import * as dotenv from 'dotenv'
+import * as cron from 'node-cron'
+import { botClocker } from './utils/puppet.js'
 
+//
 dotenv.config()
 
+// build clock in schedule
+const clockInHour = 15 // change to 10 for production
+const workDays = 'Monday,Tuesday,Wednesday,Thursday,Friday,Saturday' // remove weekends on production
+const clockInTime = `* ${clockInHour} * * ${workDays}`
+
+// build clock out schedule
+const clockOutHour = clockInHour + 1 // (clockInHour + 9) to add the whole 8hr shift and 1hr break
+const clockOutTime = `* ${clockOutHour} * * ${workDays}`
+
 /**
- *
+ * jobs
  */
-const imARealBoi = async () => {
-  // launch own chrome
-  const browser = await puppeteer.launch({
-    headless: 'new',
-  })
+console.log(`CLOCK_IN will trigger every "${workDays}" @ ${clockInHour}:00 MIL`)
+cron.schedule(clockInTime, async () => {
+  await botClocker('clock_in') // ETA < 10 seconds
+})
 
-  const page = await browser.newPage()
-  await page.goto('https://app.salarium.com/')
-  await page.setViewport({ width: 1920, height: 1080 })
-
-  try {
-    /**
-     * EMAIL
-     */
-    console.log('Locating email input...')
-    const inputEmail = await page.waitForSelector('input[name="email"]')
-
-    console.log('Typing in email and pressing Enter...')
-    await inputEmail.type(process.env.EMAIL)
-
-    /**
-     * PASSWORD
-     */
-    console.log('Locating password input...')
-    const inputPassword = await page.waitForSelector('input[type="password"]')
-
-    console.log('Typing in password and pressing Enter...')
-    await inputPassword.type(process.env.PASSWORD)
-    await inputPassword.press('Enter')
-
-    await page.waitForNavigation({ waitUntil: 'networkidle0' })
-
-    //
-  } catch (error) {
-    console.error(error)
-
-    //
-  } finally {
-    await page.screenshot({ path: 'screenshots/final.png' })
-    await browser.close()
-  }
-}
-
-// run da boi!!!
-await imARealBoi()
+console.log(
+  `CLOCK_OUT will trigger every "${workDays}" @ ${clockOutHour}:00 MIL`
+)
+cron.schedule(clockOutTime, async () => {
+  await botClocker('clock_out') // ETA < 10 seconds
+})
