@@ -19,12 +19,22 @@ const clockOutTime = `0 ${clockOutHour} * * ${workDays}`
  */
 console.log(`CLOCK_IN will trigger every "${workDays}" @ ${clockInHour}:00 MIL`)
 cron.schedule(clockInTime, async () => {
-  await botClocker('clock_in') // ETA < 10 seconds
+  try {
+    await botClocker('clock_in') // ETA < 10 seconds
+  } catch (error) {
+    console.log(error)
+    process.exit(1)
+  }
 })
 
 console.log(
   `CLOCK_OUT will trigger every "${workDays}" @ ${clockOutHour}:00 MIL`
 )
 cron.schedule(clockOutTime, async () => {
-  await botClocker('clock_out') // ETA < 10 seconds
+  try {
+    await botClocker('clock_out') // ETA < 10 seconds
+  } catch (error) {
+    console.log(error)
+    process.exit(1)
+  }
 })

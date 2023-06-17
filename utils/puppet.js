@@ -17,9 +17,7 @@ export const botClocker = async (context) => {
       break
 
     default:
-      const errorMsg = `Context ${context} is undefined, skipping job.`
-
-      console.log(errorMsg)
+      const errorMsg = `Context ${context} is undefined, closing program`
       throw new Error(errorMsg)
   }
 
