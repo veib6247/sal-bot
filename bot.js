@@ -6,12 +6,12 @@ import { botClocker } from './utils/puppet.js'
 dotenv.config()
 
 // build clock in schedule
-const clockInHour = 15 // change to 10 for production
-const workDays = 'Monday,Tuesday,Wednesday,Thursday,Friday,Saturday' // remove weekends on production
+const clockInHour = 10 // change to 10 for production
+const workDays = 'Monday,Tuesday,Wednesday,Thursday,Friday' // remove weekends on production
 const clockInTime = `0 ${clockInHour} * * ${workDays}`
 
 // build clock out schedule
-const clockOutHour = clockInHour + 1 // (clockInHour + 9) to add the whole 8hr shift and 1hr break
+const clockOutHour = clockInHour + 9 // (clockInHour + 9) to add the whole 8hr shift and 1hr break
 const clockOutTime = `0 ${clockOutHour} * * ${workDays}`
 
 /**
