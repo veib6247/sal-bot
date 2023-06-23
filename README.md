@@ -2,6 +2,10 @@
 
 This boi will clock you in and out of Salarium!
 
+## System Requirements
+
+- Node JS (latest stable)
+
 ## How to use
 
 - Clone this repo to your machine or download the ZIP
