@@ -10,11 +10,11 @@ Use at your own risk! I will not be liable if you mistakenly input the wrong sch
 
 - Node JS (latest stable)
 
-## How to use
+## How to Use
 
 - Clone this repo to your machine or download the ZIP
 - `NPM install` the dependencies
-- Create a `.env` file and add the following variables
+- Create a `.env` file and add the following variables:
   - `EMAIL` - This is the email you use to login to
   - `PASSWORD` - Your Salarium password
 - Open the `bot.js` file and modify the clock in and out times and days according to your schedule (start at line 8 onwards...)
