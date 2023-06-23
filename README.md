@@ -2,6 +2,10 @@
 
 This boi will clock you in and out of Salarium!
 
+## Disclaimer
+
+Use at your own risk! I will not be liable if you mistakenly input the wrong schedule, and you clock in or out at the wrong time, baka!
+
 ## System Requirements
 
 - Node JS (latest stable)
