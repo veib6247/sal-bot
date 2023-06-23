@@ -1,4 +1,5 @@
 import puppeteer from 'puppeteer'
+import moment from 'moment-timezone'
 
 /**
  *
@@ -6,14 +7,16 @@ import puppeteer from 'puppeteer'
  */
 export const botClocker = async (context) => {
   let contextString = ''
+  const today = new Date()
+  const timeStamp = moment.tz(today, 'Asia/Taipei').toLocaleString()
 
   switch (context) {
     case 'clock_in':
-      contextString = 'Clocking in'
+      contextString = `Clocking in: ${timeStamp}`
       break
 
     case 'clock_out':
-      contextString = 'Clocking out'
+      contextString = `Clocking out: ${timeStamp}`
       break
 
     default:
@@ -43,10 +46,8 @@ export const botClocker = async (context) => {
     await inputPassword.press('Enter')
     await page.waitForNavigation({ waitUntil: 'networkidle0' })
 
-    // TODO: actually click the button!!!
     const button = await page.waitForSelector('#time_btn')
-    await button.click()
-    // await page.waitForNetworkIdle()
+    // await button.click()
 
     //
   } catch (error) {
@@ -55,8 +56,6 @@ export const botClocker = async (context) => {
     //
   } finally {
     await page.screenshot({ path: `./screenshots/${context}.png` })
-    console.log(`${context}.png is now updated.`)
-
     await browser.close()
   }
 }
