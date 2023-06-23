@@ -55,7 +55,7 @@ export const botClocker = async (context) => {
 
     //
   } finally {
-    await page.screenshot({ path: `./screenshots/${context}.png` })
+    // await page.screenshot({ path: `./screenshots/${context}.png` })
     await browser.close()
   }
 }
