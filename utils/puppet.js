@@ -12,11 +12,11 @@ export const botClocker = async (context) => {
 
   switch (context) {
     case 'clock_in':
-      contextString = `Clocking in: ${timeStamp}`
+      contextString = `Clock in: ${timeStamp}`
       break
 
     case 'clock_out':
-      contextString = `Clocking out: ${timeStamp}`
+      contextString = `Clock out: ${timeStamp}`
       break
 
     default:
