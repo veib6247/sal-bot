@@ -21,3 +21,4 @@ Use at your own risk! I will not be liable if you mistakenly input the wrong sch
 - Save
 - Open your preferred terminal and cd to this app's directory
 - Run the command `npm run start`
+- Keep the terminal open to keep the bot alive and run at the scheduled time that you set
