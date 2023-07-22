@@ -48,11 +48,11 @@ export const botClocker = async (context) => {
 
     const button = await page.waitForSelector('#time_btn')
     await button.click()
-    await page.waitForNavigation({ waitUntil: 'networkidle0' })
 
     //
   } catch (error) {
     console.error(error)
+    process.exit(1)
 
     //
   } finally {
