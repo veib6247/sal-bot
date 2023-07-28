@@ -13,6 +13,7 @@ Use at your own risk! I will not be liable if you mistakenly input the wrong sch
 ## How to Use
 
 - Clone this repo to your machine or download the ZIP
+- Create the screenshots folder, this is mainly used for snap shotting from the browser
 - Create a `.env` file and add the following variables:
   - `EMAIL` - This is the email you use to login to
   - `PASSWORD` - Your Salarium password
