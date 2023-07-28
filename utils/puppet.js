@@ -27,6 +27,7 @@ export const botClocker = async (context) => {
   console.log(contextString)
 
   const browser = await puppeteer.launch({
+    args: ['--no-sandbox'],
     headless: 'new',
   })
 
@@ -66,6 +67,7 @@ export const botClocker = async (context) => {
  */
 export const puppetTester = async () => {
   const browser = await puppeteer.launch({
+    args: ['--no-sandbox'],
     headless: 'new',
   })
 
