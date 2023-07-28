@@ -1,6 +1,8 @@
 import * as dotenv from 'dotenv'
 import * as cron from 'node-cron'
-import { botClocker } from './utils/puppet.js'
+import { botClocker, puppetTester } from './utils/puppet.js'
+
+await puppetTester()
 
 //
 dotenv.config()

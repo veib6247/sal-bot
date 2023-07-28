@@ -60,3 +60,26 @@ export const botClocker = async (context) => {
     await browser.close()
   }
 }
+
+/**
+ *
+ */
+export const puppetTester = async () => {
+  const browser = await puppeteer.launch({
+    headless: 'new',
+  })
+
+  const page = await browser.newPage()
+
+  try {
+    await page.goto('https://google.com/')
+    await page.setViewport({ width: 1920, height: 1080 })
+    console.log('Chrome is working')
+  } catch (error) {
+    console.error(error)
+    process.exit(1)
+  } finally {
+    await page.screenshot({ path: `./screenshots/test_run.png` })
+    await browser.close()
+  }
+}
