@@ -1,5 +1,8 @@
 import puppeteer from 'puppeteer'
 import moment from 'moment-timezone'
+import * as dotenv from 'dotenv'
+
+dotenv.config()
 
 /**
  *
@@ -66,6 +69,8 @@ export const botClocker = async (context) => {
  *
  */
 export const puppetTester = async () => {
+  console.log(`Current user: ${process.env.EMAIL}`)
+
   const browser = await puppeteer.launch({
     args: ['--no-sandbox'],
     headless: 'new',
@@ -74,6 +79,7 @@ export const puppetTester = async () => {
   const page = await browser.newPage()
 
   try {
+    console.log('Checking Chromium installation...')
     await page.goto('https://google.com/')
     await page.setViewport({ width: 1920, height: 1080 })
     console.log('Chrome is working')
